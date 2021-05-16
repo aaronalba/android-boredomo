@@ -49,18 +49,21 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/education_chip"
+            app:chipIcon="@drawable/ic_action_education"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/education" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/recreational_chip"
+            app:chipIcon="@drawable/ic_action_recreational"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/recreational" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/social_chip"
+            app:chipIcon="@drawable/ic_action_social"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/social" />
@@ -79,6 +82,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cooking_chip"
+            app:chipIcon="@drawable/ic_action_cooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cooking" />
@@ -91,12 +95,14 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/music_chip"
+            app:chipIcon="@drawable/ic_action_music"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/music" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/busywork_chip"
+            app:chipIcon="@drawable/ic_action_busywork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/busywork" />
@@ -164,6 +170,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/free_chip"
+            app:chipIcon="@drawable/ic_action_free"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/free" />
@@ -176,6 +183,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/expensive_chip"
+            app:chipIcon="@drawable/ic_action_expensive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/expensive" />
