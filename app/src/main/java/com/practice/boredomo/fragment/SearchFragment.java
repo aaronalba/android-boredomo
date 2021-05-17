@@ -1,6 +1,7 @@
 package com.practice.boredomo.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.slider.Slider;
 import com.practice.boredomo.R;
+import com.practice.boredomo.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,6 +32,8 @@ public class SearchFragment extends Fragment {
     private Slider mParticipantSlider;
     private ProgressBar mProgressBar;
     private Button mSearchBtn;
+    private ChipGroup mTypeGroup;
+    private ChipGroup mCostGroup;
 
     @Nullable
     @Override
@@ -37,6 +45,8 @@ public class SearchFragment extends Fragment {
         mParticipantValue = view.findViewById(R.id.search_participant_value);
         mProgressBar = view.findViewById(R.id.search_progressBar);
         mSearchBtn = view.findViewById(R.id.search_button);
+        mTypeGroup = view.findViewById(R.id.search_type_chipGroup);
+        mCostGroup = view.findViewById(R.id.search_cost_chipGroup);
 
 
         // set listener to the slider
@@ -57,6 +67,7 @@ public class SearchFragment extends Fragment {
             }
         });
 
+
         return view;
     }
 
@@ -65,13 +76,30 @@ public class SearchFragment extends Fragment {
      * Searches the API with the given paramters
      * @param v The Button that was clicked
      */
-    public void search(View v) {
+    private void search(View v) {
+        List<String> activityTypes = new ArrayList<>();
+
         // show the loading progress bar
         mProgressBar.setVisibility(View.VISIBLE);
 
-        // compile the data to be sent to the api
+
+        // get the activity types that was checked
+        List<Integer> checkedTypes = mTypeGroup.getCheckedChipIds();
+        for(int i : checkedTypes) {
+            activityTypes.add(Utils.typeChipIdConverter(i));
+        }
+
+        // get the chosen cost
+        int checkedCost = mCostGroup.getCheckedChipId();
+        String cost = Utils.costChipIdConverter(checkedCost);
+
+
+        // get the number of participants
+        int participants = (int) mParticipantSlider.getValue();
+
 
         // send the http request to the api
 
+        // TODO implement the async task that will fetch the data from the API
     }
 }
