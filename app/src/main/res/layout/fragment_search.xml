@@ -50,54 +50,72 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/education_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/education" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/recreational_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/recreational" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/social_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/social" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/diy_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/diy" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/charity_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/charity" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cooking_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cooking" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/relaxation_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/relaxation" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/music_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/music" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/busywork_chip"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/busywork" />
