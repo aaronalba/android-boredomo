@@ -26,20 +26,18 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_result, container, false);
 
-        // set listener to the slider
-        mParticipantSlider = view.findViewById(R.id.search_participant_slider);
-        mParticipantValue = view.findViewById(R.id.search_participant_value);
-        mParticipantSlider.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                String text = ((int)value)+"";
-                mParticipantValue.setText(text);
-            }
-        });
-
-
+//        // set listener to the slider
+//        mParticipantSlider = view.findViewById(R.id.search_participant_slider);
+//        mParticipantValue = view.findViewById(R.id.search_participant_value);
+//        mParticipantSlider.addOnChangeListener(new Slider.OnChangeListener() {
+//            @Override
+//            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+//                String text = ((int)value)+"";
+//                mParticipantValue.setText(text);
+//            }
+//        });
 
 
         return view;
