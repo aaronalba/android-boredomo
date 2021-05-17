@@ -20,4 +20,5 @@
     <string name="search">Search</string>
     <string name="description_search_button">Search Button</string>
     <string name="learn_more_at">Learn more at</string>
+    <string name="json_parse_failed">JSON parse failed</string>
 </resources>

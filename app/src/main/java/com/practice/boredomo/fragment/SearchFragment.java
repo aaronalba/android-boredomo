@@ -1,5 +1,6 @@
 package com.practice.boredomo.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +18,13 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.slider.Slider;
 import com.practice.boredomo.R;
+import com.practice.boredomo.model.FetcherTaskParameter;
+import com.practice.boredomo.model.Task;
+import com.practice.boredomo.utils.NetworkUtils;
 import com.practice.boredomo.utils.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +106,50 @@ public class SearchFragment extends Fragment {
 
 
         // send the http request to the api
+        FetcherTaskParameter params = new FetcherTaskParameter(activityTypes, cost, participants);
+        new FetcherTask().execute(params);
+    }
 
-        // TODO implement the async task that will fetch the data from the API
+
+
+
+    /*
+        Class for executing a network request to an API
+     */
+    private class FetcherTask extends AsyncTask<FetcherTaskParameter, Void, Task> {
+        @Override
+        protected Task doInBackground(FetcherTaskParameter... fetcherTaskParameters) {
+            // send request
+            String data = NetworkUtils.getTask(fetcherTaskParameters[0]);
+
+            // parse json
+            try {
+                JSONObject taskJSON = new JSONObject(data);
+                String title = taskJSON.getString("activity");
+                String url = taskJSON.getString("link");
+                int key = Integer.parseInt(taskJSON.getString("key"));
+
+                // return the Task object
+                return new Task(title, url, key);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Task task) {
+            // remove the progress bar
+            mProgressBar.setVisibility(View.GONE);
+
+            if (task == null) {
+                Toast.makeText(getContext(), getString(R.string.json_parse_failed), Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            // launch the Result Activity
+            Log.d("TASKER", task.toString());
+        }
     }
 }
