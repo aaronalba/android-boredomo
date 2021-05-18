@@ -2,7 +2,9 @@ package com.practice.boredomo.utils;
 
 import android.net.Uri;
 
+import com.practice.boredomo.R;
 import com.practice.boredomo.model.FetcherTaskParameter;
+import com.practice.boredomo.model.RequestResult;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class NetworkUtils {
      * Sends a request to the Bored API server.
      * @return the JSON response from the server
      */
-    public static String getTask(FetcherTaskParameter params) {
+    public static RequestResult getTask(FetcherTaskParameter params) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
 
@@ -37,7 +39,6 @@ public class NetworkUtils {
             uriBuilder.appendQueryParameter(TYPE_PARAM, t);
         }
 
-        uriBuilder.appendQueryParameter(PARTICIPANTS_PARAM, params.getParticipants()+"");
         switch(params.getParticipants()) {
             case "one":
                 uriBuilder.appendQueryParameter(PARTICIPANTS_PARAM, "1");
@@ -76,14 +77,15 @@ public class NetworkUtils {
 
             // input stream was empty
             if (buffer.length() == 0) {
-                return null;
+                return new RequestResult(RequestResult.EMPTY);
             }
 
             // return the data
-            return buffer.toString();
+            return new RequestResult(RequestResult.SUCCESS, buffer.toString());
 
         } catch (IOException e) {
-            e.printStackTrace();
+            return new RequestResult(RequestResult.ERROR);
+
         } finally {
             // close the http connection
             if (connection != null) {
@@ -99,7 +101,5 @@ public class NetworkUtils {
                 }
             }
         }
-
-        return null;
     }
 }

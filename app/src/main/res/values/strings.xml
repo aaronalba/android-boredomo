@@ -20,4 +20,8 @@
     <string name="description_search_button">Search Button</string>
     <string name="learn_more_at">Learn more at</string>
     <string name="json_parse_failed">JSON parse failed</string>
+    <string name="result_error">An error occurred while searching for an activity. Please check your Internet connection!</string>
+    <string name="result_empty">No data received!</string>
+    <string name="result_no_activity">No activity was found from the server</string>
+    <string name="result_unknown_error">Unknown error</string>
 </resources>
