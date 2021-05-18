@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.slider.Slider;
 import com.practice.boredomo.R;
@@ -35,12 +36,10 @@ import java.util.List;
  * @author Aaron Alba
  */
 public class SearchFragment extends Fragment {
-    private TextView mParticipantValue;
-    private Slider mParticipantSlider;
     private ProgressBar mProgressBar;
     private Button mSearchBtn;
     private ChipGroup mTypeGroup;
-    private ChipGroup mCostGroup;
+    private ChipGroup mParticipantGroup;
 
     @Nullable
     @Override
@@ -48,21 +47,10 @@ public class SearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         // get references to the widgets
-        mParticipantSlider = view.findViewById(R.id.search_participant_slider);
-        mParticipantValue = view.findViewById(R.id.search_participant_value);
         mProgressBar = view.findViewById(R.id.search_progressBar);
         mSearchBtn = view.findViewById(R.id.search_button);
         mTypeGroup = view.findViewById(R.id.search_type_chipGroup);
-
-
-        // set listener to the slider
-        mParticipantSlider.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                String text = ((int)value)+"";
-                mParticipantValue.setText(text);
-            }
-        });
+        mParticipantGroup = view.findViewById(R.id.search_participant_chipGroup);
 
 
         // set onClick to the search button
@@ -72,6 +60,7 @@ public class SearchFragment extends Fragment {
                 search(v);
             }
         });
+
 
 
         return view;
@@ -95,7 +84,7 @@ public class SearchFragment extends Fragment {
         }
 
         // get the number of participants
-        int participants = (int) mParticipantSlider.getValue();
+        String participants = Utils.participantIdConverter(mParticipantGroup.getCheckedChipId());
 
         // send the http request to the api
         FetcherTaskParameter params = new FetcherTaskParameter(activityTypes, participants);
@@ -117,6 +106,12 @@ public class SearchFragment extends Fragment {
             // parse json
             try {
                 JSONObject taskJSON = new JSONObject(data);
+
+                // check if parse failed
+                if (taskJSON.has("error")) {
+                    return null;
+                }
+
                 String title = taskJSON.getString("activity");
                 String url = taskJSON.getString("link");
                 int key = Integer.parseInt(taskJSON.getString("key"));

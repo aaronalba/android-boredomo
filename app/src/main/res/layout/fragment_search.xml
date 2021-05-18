@@ -14,9 +14,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/new_random_activity"
-        android:textStyle="bold"
+        android:textAlignment="center"
         android:textColor="@color/design_default_color_primary"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,23 +27,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:text="@string/choose_activity_type"
-        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary_variant"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/search_type_chipGroup"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_header" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/search_type_chipGroup"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/search_participant_header"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_type_header">
 
@@ -51,73 +57,73 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/education_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/education" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/recreational_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/recreational" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/social_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/social" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/diy_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/diy" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/charity_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/charity" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cooking_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/cooking" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/relaxation_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/relaxation" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/music_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/music" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/busywork_chip"
             style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/busywork" />
     </com.google.android.material.chip.ChipGroup>
 
@@ -127,51 +133,69 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/number_participants"
-        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_primary_variant"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/search_participant_chipGroup"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_type_chipGroup" />
 
-    <TextView
-        android:id="@+id/search_participant_value"
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/search_participant_chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="@string/one_digit"
-        android:textColor="@color/design_default_color_primary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/search_participant_header" />
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/search_participant_slider"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        app:singleSelection="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:stepSize="1"
-        android:valueFrom="1"
-        android:valueTo="5"
+
+        app:layout_constraintBottom_toTopOf="@+id/search_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_participant_header" />
+        app:layout_constraintTop_toBottomOf="@+id/search_participant_header">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/participant_one"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/one" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/participant_two"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/two" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/participant_many"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/many" />
+    </com.google.android.material.chip.ChipGroup>
 
     <Button
         android:id="@+id/search_button"
-        android:drawableLeft="@drawable/ic_action_search_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
-        android:bottomRightRadius="10dp"
         android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:contentDescription="@string/description_search_button"
+        android:drawableLeft="@drawable/ic_action_search_dark"
+        android:text="@string/search"
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp"
-        android:text="@string/search"
-        android:contentDescription="@string/description_search_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -179,10 +203,10 @@
     <ProgressBar
         android:id="@+id/search_progressBar"
         style="?android:attr/progressBarStyle"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/search_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -36,4 +36,22 @@ public final class Utils {
             return "";
         }
     }
+
+
+    /**
+     * Converts a participant chip id to its name.
+     * @param id The id of the participant chip.
+     * @return the name of the chip.
+     */
+    public static String participantIdConverter(int id) {
+        if (id == R.id.participant_one) {
+            return "one";
+        } else if (id == R.id.participant_two) {
+            return "two";
+        } else if (id == R.id.participant_many) {
+            return "many";
+        } else {
+            return "";
+        }
+    }
 }

@@ -20,9 +20,7 @@ public class NetworkUtils {
     private static final String KEY_PARAM = "key";
     private static final String TYPE_PARAM = "type";
     private static final String PARTICIPANTS_PARAM = "participants";
-    private static final String PRICE_PARAM = "price";
-    private static final String MINPRICE_PARAM = "minprice";
-    private static final String MAXPRICE_PARAM = "maxprice";
+    private static final String MIN_PARTICIPANTS_PARAM = "minparticipants";
 
 
     /**
@@ -40,6 +38,17 @@ public class NetworkUtils {
         }
 
         uriBuilder.appendQueryParameter(PARTICIPANTS_PARAM, params.getParticipants()+"");
+        switch(params.getParticipants()) {
+            case "one":
+                uriBuilder.appendQueryParameter(PARTICIPANTS_PARAM, "1");
+                break;
+            case "two":
+                uriBuilder.appendQueryParameter(PARTICIPANTS_PARAM, "2");
+                break;
+            case "many":
+                uriBuilder.appendQueryParameter(MIN_PARTICIPANTS_PARAM, "3");
+                break;
+        }
 
         Uri uri = uriBuilder.build();
 

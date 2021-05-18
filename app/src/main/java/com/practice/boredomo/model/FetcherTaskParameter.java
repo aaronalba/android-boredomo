@@ -9,9 +9,9 @@ import java.util.List;
  */
 public class FetcherTaskParameter {
     private List<String> types;
-    private int participants;
+    private String participants;
 
-    public FetcherTaskParameter(List<String> t, int p) {
+    public FetcherTaskParameter(List<String> t, String p) {
         types = t;
         participants = p;
     }
@@ -21,7 +21,7 @@ public class FetcherTaskParameter {
         return types;
     }
 
-    public int getParticipants() {
+    public String getParticipants() {
         return participants;
     }
 }
