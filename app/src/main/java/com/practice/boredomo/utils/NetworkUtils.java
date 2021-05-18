@@ -1,10 +1,14 @@
 package com.practice.boredomo.utils;
 
 import android.net.Uri;
+import android.util.JsonReader;
 
 import com.practice.boredomo.R;
 import com.practice.boredomo.model.FetcherTaskParameter;
 import com.practice.boredomo.model.RequestResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -80,10 +84,15 @@ public class NetworkUtils {
                 return new RequestResult(RequestResult.EMPTY);
             }
 
-            // return the data
-            return new RequestResult(RequestResult.SUCCESS, buffer.toString());
+            String json = buffer.toString();
+            if (new JSONObject(json).has("error")) {
+                return new RequestResult(RequestResult.NO_ACTIVITY_FOUND);
+            }
 
-        } catch (IOException e) {
+            // return the data
+            return new RequestResult(RequestResult.SUCCESS, json);
+
+        } catch (IOException | JSONException e) {
             return new RequestResult(RequestResult.ERROR);
 
         } finally {

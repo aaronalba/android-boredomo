@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.practice.boredomo.R;
 import com.practice.boredomo.model.FetcherTaskParameter;
@@ -37,6 +39,18 @@ public class SearchFragment extends Fragment {
     private Button mSearchBtn;
     private ChipGroup mTypeGroup;
     private ChipGroup mParticipantGroup;
+    private Chip mOneChip;
+    private Chip mTwoChip;
+    private Chip mManyChip;
+    private Chip mEducationChip;
+    private Chip mRecreationalChip;
+    private Chip mSocialChip;
+    private Chip mDiyChip;
+    private Chip mCharityChip;
+    private Chip mCookingChip;
+    private Chip mRelaxationChip;
+    private Chip mMusicChip;
+    private Chip mBusyWorkChip;
 
     @Nullable
     @Override
@@ -49,6 +63,31 @@ public class SearchFragment extends Fragment {
         mTypeGroup = view.findViewById(R.id.search_type_chipGroup);
         mParticipantGroup = view.findViewById(R.id.search_participant_chipGroup);
 
+        mOneChip = view.findViewById(R.id.participant_one);
+        mTwoChip = view.findViewById(R.id.participant_two);
+        mManyChip = view.findViewById(R.id.participant_many);
+
+        mEducationChip = view.findViewById(R.id.education_chip);
+        mRecreationalChip = view.findViewById(R.id.recreational_chip);
+        mSocialChip = view.findViewById(R.id.social_chip);
+        mDiyChip = view.findViewById(R.id.diy_chip);
+        mCharityChip = view.findViewById(R.id.charity_chip);
+        mCookingChip = view.findViewById(R.id.cooking_chip);
+        mRelaxationChip = view.findViewById(R.id.relaxation_chip);
+        mMusicChip = view.findViewById(R.id.music_chip);
+        mBusyWorkChip = view.findViewById(R.id.busywork_chip);
+
+
+        // set activity type chip listener
+        mEducationChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mRecreationalChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mSocialChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mDiyChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mCharityChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mCookingChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mRelaxationChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mMusicChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
+        mBusyWorkChip.setOnCheckedChangeListener((buttonView, isChecked) -> activityChipListener(buttonView, isChecked));
 
         // set onClick to the search button
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +96,7 @@ public class SearchFragment extends Fragment {
                 search(v);
             }
         });
+
 
         return view;
     }
@@ -143,6 +183,17 @@ public class SearchFragment extends Fragment {
 
         } catch (JSONException e) {
             return null;
+        }
+    }
+
+
+    /*
+        Method to be called when an Activity Type Chip has been selected
+     */
+    private void activityChipListener(View v, boolean isChecked) {
+        List<Integer> checkedChips = mTypeGroup.getCheckedChipIds();
+        if (checkedChips.size() == 0) {
+            ((Chip) v).setChecked(true);
         }
     }
 }
