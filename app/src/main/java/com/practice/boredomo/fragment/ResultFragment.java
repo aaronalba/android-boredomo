@@ -23,10 +23,21 @@ public class ResultFragment extends Fragment {
     private TextView mResultLearnMore;
     private TextView mResultLink;
     private Button mRetryBtn;
-    private Task mTask;
+    private String mHeader;
+    private String mLink;
 
     private static final String ARGS_ACTIVITY = "activity";
     private static final String ARGS_LINK = "link";
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // retrieve the fragment arguments
+        Bundle args = getArguments();
+        mHeader = (String) args.getSerializable(ARGS_ACTIVITY);
+        mLink = (String) args.getSerializable(ARGS_LINK);
+    }
 
     @Nullable
     @Override
@@ -37,6 +48,24 @@ public class ResultFragment extends Fragment {
         mResultLearnMore = view.findViewById(R.id.result_learn_more);
         mResultLink = view.findViewById(R.id.result_link);
         mRetryBtn = view.findViewById(R.id.result_retry_btn);
+
+        // set the data to be shown
+        mResultHeader.setText(mHeader);
+
+        if (mLink.length() == 0) {
+            mResultLearnMore.setVisibility(View.GONE);
+            mResultLink.setVisibility(View.GONE);
+        } else {
+            mResultLink.setText(mLink);
+        }
+
+        // set listener for the retry button
+        mRetryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
 
         return view;
     }

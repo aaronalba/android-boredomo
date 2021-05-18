@@ -3,7 +3,9 @@ package com.practice.boredomo.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.practice.boredomo.fragment.ResultFragment;
@@ -18,7 +20,12 @@ public class ResultActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new ResultFragment();
+        // the intent that was used to start this activity which contains the arguments for the ResultFragment
+        Intent intent = getIntent();
+        String header = (String) intent.getSerializableExtra(EXTRA_ACTIVITY);
+        String link = (String) intent.getSerializableExtra(EXTRA_LINK);
+
+        return ResultFragment.newInstance(header, link);
     }
 
 
