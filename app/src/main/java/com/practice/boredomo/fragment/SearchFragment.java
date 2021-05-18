@@ -53,7 +53,6 @@ public class SearchFragment extends Fragment {
         mProgressBar = view.findViewById(R.id.search_progressBar);
         mSearchBtn = view.findViewById(R.id.search_button);
         mTypeGroup = view.findViewById(R.id.search_type_chipGroup);
-        mCostGroup = view.findViewById(R.id.search_cost_chipGroup);
 
 
         // set listener to the slider
@@ -89,24 +88,17 @@ public class SearchFragment extends Fragment {
         // show the loading progress bar
         mProgressBar.setVisibility(View.VISIBLE);
 
-
         // get the activity types that was checked
         List<Integer> checkedTypes = mTypeGroup.getCheckedChipIds();
         for(int i : checkedTypes) {
             activityTypes.add(Utils.typeChipIdConverter(i));
         }
 
-        // get the chosen cost
-        int checkedCost = mCostGroup.getCheckedChipId();
-        String cost = Utils.costChipIdConverter(checkedCost);
-
-
         // get the number of participants
         int participants = (int) mParticipantSlider.getValue();
 
-
         // send the http request to the api
-        FetcherTaskParameter params = new FetcherTaskParameter(activityTypes, cost, participants);
+        FetcherTaskParameter params = new FetcherTaskParameter(activityTypes, participants);
         new FetcherTask().execute(params);
     }
 

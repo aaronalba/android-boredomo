@@ -41,20 +41,6 @@ public class NetworkUtils {
 
         uriBuilder.appendQueryParameter(PARTICIPANTS_PARAM, params.getParticipants()+"");
 
-        switch (params.getCost()) {
-            case "free":
-                uriBuilder.appendQueryParameter(MINPRICE_PARAM, "0");
-                break;
-            case "cheap":
-                uriBuilder.appendQueryParameter(MINPRICE_PARAM, "0.01");
-                uriBuilder.appendQueryParameter(MAXPRICE_PARAM, "0.3");
-                break;
-            case "expensive":
-                uriBuilder.appendQueryParameter(MINPRICE_PARAM, "0.31");
-                uriBuilder.appendQueryParameter(MAXPRICE_PARAM, "1");
-                break;
-        }
-
         Uri uri = uriBuilder.build();
 
 

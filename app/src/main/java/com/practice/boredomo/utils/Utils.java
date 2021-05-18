@@ -36,22 +36,4 @@ public final class Utils {
             return "";
         }
     }
-
-
-    /**
-     * Converts a given cost chip id to the String name of the chip.
-     * @param id chip id.
-     * @return the name of the chip.
-     */
-    public static String costChipIdConverter(int id) {
-        if (id == R.id.free_chip) {
-            return "free";
-        } else if (id == R.id.cheap_chip) {
-            return "cheap";
-        } else if (id == R.id.expensive_chip) {
-            return "expensive";
-        } else {
-            return "";
-        }
-    }
 }

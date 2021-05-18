@@ -9,22 +9,16 @@ import java.util.List;
  */
 public class FetcherTaskParameter {
     private List<String> types;
-    private String cost;
     private int participants;
 
-    public FetcherTaskParameter(List<String> t, String c, int p) {
+    public FetcherTaskParameter(List<String> t, int p) {
         types = t;
-        cost = c;
         participants = p;
     }
 
 
     public List<String> getTypes() {
         return types;
-    }
-
-    public String getCost() {
-        return cost;
     }
 
     public int getParticipants() {
