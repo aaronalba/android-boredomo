@@ -1,5 +1,6 @@
 package com.practice.boredomo.fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.practice.boredomo.R;
+import com.practice.boredomo.activity.ResultActivity;
 import com.practice.boredomo.model.FetcherTaskParameter;
 import com.practice.boredomo.model.RequestResult;
 import com.practice.boredomo.model.Task;
@@ -159,6 +161,8 @@ public class SearchFragment extends Fragment {
                 }
 
                 // launch the Result Activity
+                Intent intent = ResultActivity.newIntent(getContext(), task.getTitle(), task.getURL());
+                startActivity(intent);
 
             } else {
                 Toast.makeText(getContext(), getString(R.string.result_unknown_error), Toast.LENGTH_LONG).show();
