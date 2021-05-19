@@ -21,7 +21,7 @@ import com.practice.boredomo.activity.ResultActivity;
 import com.practice.boredomo.model.FetcherTaskParameter;
 import com.practice.boredomo.model.RequestResult;
 import com.practice.boredomo.model.Task;
-import com.practice.boredomo.utils.RequestSender;
+import com.practice.boredomo.network.RequestSender;
 import com.practice.boredomo.utils.Utils;
 
 import org.json.JSONException;

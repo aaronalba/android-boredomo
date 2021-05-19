@@ -1,4 +1,4 @@
-package com.practice.boredomo.utils;
+package com.practice.boredomo.network;
 
 import android.net.Uri;
 import android.util.JsonReader;
