@@ -1,6 +1,10 @@
 package com.practice.boredomo.utils;
 
 import com.practice.boredomo.R;
+import com.practice.boredomo.model.Task;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Util Class for the application
@@ -52,6 +56,28 @@ public final class Utils {
             return "many";
         } else {
             return "";
+        }
+    }
+
+
+    /**
+     * Converts the given JSON string to a Task object
+     * @param json
+     * @return
+     */
+    public static Task parseTask(String json) {
+        try {
+            JSONObject taskJSON = new JSONObject(json);
+
+            String title = taskJSON.getString("activity");
+            String url = taskJSON.getString("link");
+            int key = Integer.parseInt(taskJSON.getString("key"));
+
+            // return the Task object
+            return new Task(title, url, key);
+
+        } catch (JSONException e) {
+            return null;
         }
     }
 }
