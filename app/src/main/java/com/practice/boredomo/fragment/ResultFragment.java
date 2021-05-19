@@ -71,6 +71,7 @@ public class ResultFragment extends Fragment {
             public void onClick(View v) {
                 // resend the request that was sent by the search fragment to the API using the same parameters
                 mResultProgressBar.setVisibility(View.VISIBLE);
+                mMoreBtn.setEnabled(false); // remove clickable to avoid sending request while waiting for a response
 
                 RequestParameter params = RequestParameterStash.getInstance().getRecent();
                 new FetcherTask().execute(params);
@@ -149,6 +150,7 @@ public class ResultFragment extends Fragment {
                 mHeader = task.getTitle();
                 mLink = task.getURL();
                 updateUI();
+                mMoreBtn.setEnabled(true); // re-enable the more button after updating the new result to the UI
 
             } else {
                 Toast.makeText(getContext(), getString(R.string.result_unknown_error), Toast.LENGTH_LONG).show();
