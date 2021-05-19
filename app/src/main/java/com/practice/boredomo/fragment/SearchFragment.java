@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,7 +21,7 @@ import com.practice.boredomo.activity.ResultActivity;
 import com.practice.boredomo.model.FetcherTaskParameter;
 import com.practice.boredomo.model.RequestResult;
 import com.practice.boredomo.model.Task;
-import com.practice.boredomo.utils.NetworkUtils;
+import com.practice.boredomo.utils.RequestSender;
 import com.practice.boredomo.utils.Utils;
 
 import org.json.JSONException;
@@ -137,7 +136,7 @@ public class SearchFragment extends Fragment {
         @Override
         protected RequestResult doInBackground(FetcherTaskParameter... fetcherTaskParameters) {
             // send request to the API
-            return NetworkUtils.getTask(fetcherTaskParameters[0]);
+            return RequestSender.getTask(fetcherTaskParameters[0]);
         }
 
         @Override

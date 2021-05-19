@@ -21,7 +21,7 @@ import java.net.URL;
  * Class that implements the fetching of data from the BoredAPI
  * @author Aaron Alba
  */
-public class NetworkUtils {
+public class RequestSender {
     private static final String BORED_API_URL = "https://www.boredapi.com/api/activity/";
     private static final String KEY_PARAM = "key";
     private static final String TYPE_PARAM = "type";
