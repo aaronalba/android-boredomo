@@ -1,11 +1,14 @@
 package com.practice.boredomo.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,6 +67,20 @@ public class ResultFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().finish();
+            }
+        });
+
+
+        // set listener for the link
+        mResultLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // this will fire an implicit intent to start the browser and go to the link
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(mLink));
+
+                startActivity(intent);
             }
         });
 
