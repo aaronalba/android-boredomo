@@ -1,10 +1,8 @@
 package com.practice.boredomo.network;
 
 import android.net.Uri;
-import android.util.JsonReader;
 
-import com.practice.boredomo.R;
-import com.practice.boredomo.model.FetcherTaskParameter;
+import com.practice.boredomo.model.RequestParameter;
 import com.practice.boredomo.model.RequestResult;
 
 import org.json.JSONException;
@@ -33,7 +31,7 @@ public class RequestSender {
      * Sends a request to the Bored API server.
      * @return the JSON response from the server
      */
-    public static RequestResult getTask(FetcherTaskParameter params) {
+    public static RequestResult getTask(RequestParameter params) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
 

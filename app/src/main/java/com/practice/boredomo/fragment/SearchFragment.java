@@ -18,7 +18,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.practice.boredomo.R;
 import com.practice.boredomo.activity.ResultActivity;
-import com.practice.boredomo.model.FetcherTaskParameter;
+import com.practice.boredomo.model.RequestParameter;
 import com.practice.boredomo.model.RequestResult;
 import com.practice.boredomo.model.Task;
 import com.practice.boredomo.network.RequestSender;
@@ -123,7 +123,7 @@ public class SearchFragment extends Fragment {
         String participants = Utils.participantIdConverter(mParticipantGroup.getCheckedChipId());
 
         // send the http request to the api
-        FetcherTaskParameter params = new FetcherTaskParameter(activityTypes, participants);
+        RequestParameter params = new RequestParameter(activityTypes, participants);
         new FetcherTask().execute(params);
     }
 
@@ -132,9 +132,9 @@ public class SearchFragment extends Fragment {
     /*
         Class for executing a network request to an API
      */
-    private class FetcherTask extends AsyncTask<FetcherTaskParameter, Void, RequestResult> {
+    private class FetcherTask extends AsyncTask<RequestParameter, Void, RequestResult> {
         @Override
-        protected RequestResult doInBackground(FetcherTaskParameter... fetcherTaskParameters) {
+        protected RequestResult doInBackground(RequestParameter... fetcherTaskParameters) {
             // send request to the API
             return RequestSender.getTask(fetcherTaskParameters[0]);
         }
