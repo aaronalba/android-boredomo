@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.practice.boredomo.R;
-import com.practice.boredomo.model.Task;
 
 /**
  * Fragment for showing the result from the Search Random Activity
@@ -25,7 +23,7 @@ public class ResultFragment extends Fragment {
     private TextView mResultHeader;
     private TextView mResultLearnMore;
     private TextView mResultLink;
-    private Button mRetryBtn;
+    private Button mMoreBtn;
     private String mHeader;
     private String mLink;
 
@@ -50,7 +48,7 @@ public class ResultFragment extends Fragment {
         mResultHeader = view.findViewById(R.id.result_activity);
         mResultLearnMore = view.findViewById(R.id.result_learn_more);
         mResultLink = view.findViewById(R.id.result_link);
-        mRetryBtn = view.findViewById(R.id.result_retry_btn);
+        mMoreBtn = view.findViewById(R.id.result_more_btn);
 
         // set the data to be shown
         mResultHeader.setText(mHeader);
@@ -63,7 +61,7 @@ public class ResultFragment extends Fragment {
         }
 
         // set listener for the retry button
-        mRetryBtn.setOnClickListener(new View.OnClickListener() {
+        mMoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().finish();

@@ -19,6 +19,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.practice.boredomo.R;
 import com.practice.boredomo.activity.ResultActivity;
 import com.practice.boredomo.model.RequestParameter;
+import com.practice.boredomo.model.RequestParameterStash;
 import com.practice.boredomo.model.RequestResult;
 import com.practice.boredomo.model.Task;
 import com.practice.boredomo.network.RequestSender;
