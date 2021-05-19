@@ -12,7 +12,9 @@ public class RequestParameterStash {
     private ArrayList<RequestParameter> mRequestParameters;
 
     // private constructor to avoid multiple instantiation
-    private RequestParameterStash() {}
+    private RequestParameterStash() {
+        mRequestParameters = new ArrayList<>();
+    }
 
 
     /**

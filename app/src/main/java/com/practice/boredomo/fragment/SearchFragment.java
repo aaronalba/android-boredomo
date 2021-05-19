@@ -125,6 +125,7 @@ public class SearchFragment extends Fragment {
 
         // send the http request to the api
         RequestParameter params = new RequestParameter(activityTypes, participants);
+        RequestParameterStash.getInstance().update(params);
         new FetcherTask().execute(params);
     }
 
@@ -154,7 +155,7 @@ public class SearchFragment extends Fragment {
                 Toast.makeText(getContext(), getString(R.string.result_no_activity), Toast.LENGTH_LONG).show();
             } else if (res.getStatus() == RequestResult.SUCCESS) {
                 // parse json here
-                Task task = parseTask(res.getJSON());
+                Task task = Utils.parseTask(res.getJSON());
 
                 if (task==null) {
                     Toast.makeText(getContext(), getString(R.string.json_parse_failed), Toast.LENGTH_LONG).show();
@@ -171,24 +172,7 @@ public class SearchFragment extends Fragment {
     }
 
 
-    /*
-        Converts the given JSON string to a Task object
-     */
-    private Task parseTask(String json) {
-        try {
-            JSONObject taskJSON = new JSONObject(json);
 
-            String title = taskJSON.getString("activity");
-            String url = taskJSON.getString("link");
-            int key = Integer.parseInt(taskJSON.getString("key"));
-
-            // return the Task object
-            return new Task(title, url, key);
-
-        } catch (JSONException e) {
-            return null;
-        }
-    }
 
 
     /*
