@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class ResultFragment extends Fragment {
     private TextView mResultLearnMore;
     private TextView mResultLink;
     private Button mMoreBtn;
+    private ProgressBar mResultProgressBar;
     private String mHeader;
     private String mLink;
 
@@ -54,10 +56,12 @@ public class ResultFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
 
+        // get references to the widgets
         mResultHeader = view.findViewById(R.id.result_activity);
         mResultLearnMore = view.findViewById(R.id.result_learn_more);
         mResultLink = view.findViewById(R.id.result_link);
         mMoreBtn = view.findViewById(R.id.result_more_btn);
+        mResultProgressBar = view.findViewById(R.id.result_progressBar);
 
         updateUI();
 
@@ -66,6 +70,8 @@ public class ResultFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // resend the request that was sent by the search fragment to the API using the same parameters
+                mResultProgressBar.setVisibility(View.VISIBLE);
+
                 RequestParameter params = RequestParameterStash.getInstance().getRecent();
                 new FetcherTask().execute(params);
             }
@@ -118,8 +124,8 @@ public class ResultFragment extends Fragment {
 
         @Override
         protected void onPostExecute(RequestResult res) {
-//            // remove the progress bar
-//            mProgressBar.setVisibility(View.GONE);
+            // remove the progress bar
+            mResultProgressBar.setVisibility(View.GONE);
 
             // process the result
             if (res.getStatus() == RequestResult.ERROR) {
