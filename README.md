@@ -1,5 +1,5 @@
 # Boredomo
-Boredomo is an android app that displays random activities. The app features a menu that allows the user to select the activity type and the number of participants of the activity to be shown.
+Boredomo is an android app that displays random activities from an API. The app features a menu that allows the user to select the activity type and the number of participants of the activity to be shown.
 
 ## How to install?
 Download the apk file in the `demo` directory named `boredomo.apk` and install it on your device.
