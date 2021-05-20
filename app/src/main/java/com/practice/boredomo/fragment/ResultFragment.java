@@ -167,7 +167,7 @@ public class ResultFragment extends Fragment {
 
 
     /*
-        Updates the header and the link textviews of this fragment
+        Updates the header and the link text views of this fragment
      */
     private void updateUI() {
         // set the data to be shown
@@ -177,6 +177,8 @@ public class ResultFragment extends Fragment {
             mResultLearnMore.setVisibility(View.GONE);
             mResultLink.setVisibility(View.GONE);
         } else {
+            mResultLearnMore.setVisibility(View.VISIBLE);
+            mResultLink.setVisibility(View.VISIBLE);
             mResultLink.setText(mLink);
         }
     }
